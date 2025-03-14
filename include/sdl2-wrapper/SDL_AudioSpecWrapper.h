@@ -3,8 +3,6 @@
 #include <base/Wrapper.h>
 #include <ffmpeg-wrapper/info-collection/IAudioFrameInfoCollection.h>
 #include <SDL.h>
-#include <sstream>
-#include <string>
 
 namespace video
 {

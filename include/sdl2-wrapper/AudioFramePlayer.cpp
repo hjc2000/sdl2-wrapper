@@ -3,9 +3,7 @@
 #include <ffmpeg-wrapper/wrapper/AVCodecContextWrapper.h>
 #include <ffmpeg-wrapper/wrapper/AVStreamWrapper.h>
 
-using namespace video;
-
-AudioFramePlayer::AudioFramePlayer(IAudioStreamInfoCollection const &infos)
+video::AudioFramePlayer::AudioFramePlayer(IAudioStreamInfoCollection const &infos)
 {
 	_time_base = infos.TimeBase();
 	_device = std::shared_ptr<SDL_DefaultAudioDevice>{new SDL_DefaultAudioDevice{}};
@@ -20,13 +18,13 @@ AudioFramePlayer::AudioFramePlayer(IAudioStreamInfoCollection const &infos)
 	_swr_pipe->ConsumerList().Add(_frame_queue);
 }
 
-AudioFramePlayer::~AudioFramePlayer()
+video::AudioFramePlayer::~AudioFramePlayer()
 {
 	Dispose();
 	std::cout << "~AudioFramePlayer()" << std::endl;
 }
 
-void AudioFramePlayer::Dispose()
+void video::AudioFramePlayer::Dispose()
 {
 	if (_disposed)
 	{
@@ -39,7 +37,7 @@ void AudioFramePlayer::Dispose()
 	_device->Dispose();
 }
 
-void AudioFramePlayer::AudioCallbackHandler(uint8_t *stream, int len)
+void video::AudioFramePlayer::AudioCallbackHandler(uint8_t *stream, int len)
 {
 	if (_should_pause || _disposed)
 	{
@@ -65,12 +63,12 @@ void AudioFramePlayer::AudioCallbackHandler(uint8_t *stream, int len)
 	_time_interpolator.SyncTime(_swr_out_frame.PtsToMilliseconds().count());
 }
 
-int64_t AudioFramePlayer::RefTime()
+int64_t video::AudioFramePlayer::RefTime()
 {
 	return _time_interpolator.InterpolatedTimeInMilliseconds();
 }
 
-void AudioFramePlayer::Pause(bool pause)
+void video::AudioFramePlayer::Pause(bool pause)
 {
 	/* 这里没什么要加锁的，设置标志位而已。而且标志位还用了原子量。_device->Pause
 	 * 也是线程安全的。
@@ -90,7 +88,7 @@ void AudioFramePlayer::Pause(bool pause)
 	}
 }
 
-void AudioFramePlayer::SendData(AVFrameWrapper &frame)
+void video::AudioFramePlayer::SendData(AVFrameWrapper &frame)
 {
 	if (_disposed)
 	{
@@ -107,7 +105,7 @@ void AudioFramePlayer::SendData(AVFrameWrapper &frame)
 	}
 }
 
-void AudioFramePlayer::Flush()
+void video::AudioFramePlayer::Flush()
 {
 	_swr_pipe->Flush();
 }

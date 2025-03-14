@@ -111,3 +111,9 @@ void video::test_AVPacketPlayer()
 	player->Dispose();
 	thread_has_exited.Wait();
 }
+
+void video::AVPacketPlayer::Flush()
+{
+	_video_packet_player->Flush();
+	_audio_packet_player->Flush();
+}

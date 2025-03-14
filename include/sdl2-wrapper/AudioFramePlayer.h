@@ -2,7 +2,6 @@
 #include <base/pipe/IConsumer.h>
 #include <base/pipe/PipeBlockingQueue.h>
 #include <base/TimeInterpolator.h>
-#include <condition_variable>
 #include <ffmpeg-wrapper/AVChannelLayoutExtension.h>
 #include <ffmpeg-wrapper/pipe/SwrPipe.h>
 #include <ffmpeg-wrapper/wrapper/AVFrameWrapper.h>
