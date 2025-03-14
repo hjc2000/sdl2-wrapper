@@ -19,7 +19,7 @@ include(target_import_ffmpeg_wrapper)
 
 
 # 编译为动态库
-add_library(${ProjectName} SHARED)
+add_library(${ProjectName})
 
 # 将资源目录用预定义传给 C++ 程序
 target_compile_definitions(${ProjectName} PRIVATE Predefine_ResourceDir="${CMAKE_CURRENT_SOURCE_DIR}/资源")
