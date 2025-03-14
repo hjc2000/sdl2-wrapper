@@ -30,11 +30,10 @@ namespace video
 		/// <param name="Vsize">V 数组的长度</param>
 		///
 		/// <returns>成功返回 0，失败返回错误代码</returns>
-		int UpdateYUVTexture(
-			SDL_Rect const *rect,
-			Uint8 const *Yplane, int Ysize,
-			Uint8 const *Uplane, int Usize,
-			Uint8 const *Vplane, int Vsize);
+		int UpdateYUVTexture(SDL_Rect const *rect,
+							 Uint8 const *Yplane, int Ysize,
+							 Uint8 const *Uplane, int Usize,
+							 Uint8 const *Vplane, int Vsize);
 
 		/// <summary>
 		///		使用 AVFrameWrapper 更新纹理。
