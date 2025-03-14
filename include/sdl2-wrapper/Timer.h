@@ -2,7 +2,6 @@
 #include <atomic>
 #include <base/task/TaskCompletionSignal.h>
 #include <chrono>
-#include <iostream>
 #include <sdl2-wrapper/SDL_EventGetter.h>
 #include <sdl2-wrapper/SDL_Initializer.h>
 
