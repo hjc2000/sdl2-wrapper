@@ -1,5 +1,4 @@
 #pragma once
-#include <atomic>
 #include <base/container/HysteresisBlockingQueue.h>
 #include <base/pipe/IConsumer.h>
 #include <base/pipe/PipeBlockingQueue.h>
@@ -10,7 +9,7 @@
 #include <ffmpeg-wrapper/wrapper/AVCodecContextWrapper.h>
 #include <ffmpeg-wrapper/wrapper/AVStreamWrapper.h>
 #include <sdl2-wrapper/AudioFramePlayer.h>
-#include <semaphore>
+#include <sdl2-wrapper/pch.h>
 
 namespace video
 {

@@ -1,8 +1,7 @@
 #pragma once
-#include <base/string/Json.h>
 #include <base/Wrapper.h>
 #include <ffmpeg-wrapper/info-collection/IAudioFrameInfoCollection.h>
-#include <SDL.h>
+#include <sdl2-wrapper/pch.h>
 
 namespace video
 {

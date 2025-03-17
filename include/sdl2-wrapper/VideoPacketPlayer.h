@@ -4,9 +4,9 @@
 #include <base/pipe/PipeBlockingQueue.h>
 #include <base/pipe/Pump.h>
 #include <base/task/CancellationTokenSource.h>
-#include <ffmpeg-wrapper/base_include.h>
 #include <ffmpeg-wrapper/ErrorCode.h>
 #include <ffmpeg-wrapper/pipe/ThreadDecoderPipe.h>
+#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/VideoFramePlayer.h>
 
 namespace video

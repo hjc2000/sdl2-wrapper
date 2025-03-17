@@ -3,6 +3,7 @@
 #include <base/IDisposable.h>
 #include <base/pipe/IConsumer.h>
 #include <sdl2-wrapper/AudioPacketPlayer.h>
+#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/VideoPacketPlayer.h>
 
 namespace video

@@ -1,5 +1,5 @@
 #pragma once
-#include <cstdint>
+#include <sdl2-wrapper/pch.h>
 
 namespace video
 {

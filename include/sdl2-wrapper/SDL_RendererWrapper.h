@@ -1,5 +1,5 @@
 #pragma once
-#include <memory>
+#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/SDL_Initializer.h>
 #include <sdl2-wrapper/SDL_TextureWrapper.h>
 

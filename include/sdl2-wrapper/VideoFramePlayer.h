@@ -1,15 +1,14 @@
 #pragma once
-#include <atomic>
 #include <base/container/HysteresisBlockingQueue.h>
 #include <base/container/SafeQueue.h>
 #include <base/IDisposable.h>
 #include <base/pipe/IConsumer.h>
-#include <ffmpeg-wrapper/base_include.h>
 #include <ffmpeg-wrapper/ErrorCode.h>
 #include <ffmpeg-wrapper/info-collection/VideoStreamInfoCollection.h>
 #include <ffmpeg-wrapper/wrapper/AVCodecContextWrapper.h>
 #include <ffmpeg-wrapper/wrapper/AVStreamWrapper.h>
 #include <sdl2-wrapper/IRefTimer.h>
+#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/Timer.h>
 #include <sdl2-wrapper/VideoFrameDisplayer.h>
 

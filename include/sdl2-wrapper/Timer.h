@@ -1,7 +1,6 @@
 #pragma once
-#include <atomic>
 #include <base/task/TaskCompletionSignal.h>
-#include <chrono>
+#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/SDL_EventGetter.h>
 #include <sdl2-wrapper/SDL_Initializer.h>
 

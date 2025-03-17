@@ -1,11 +1,6 @@
 #pragma once
-#include <base/string/define.h>
 #include <base/Wrapper.h>
-
-extern "C"
-{
-#include <SDL.h>
-}
+#include <sdl2-wrapper/pch.h>
 
 namespace video
 {
