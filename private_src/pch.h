@@ -2,6 +2,11 @@
 // IWYU pragma: begin_keep
 // IWYU pragma: begin_exports
 
+extern "C"
+{
+#include <SDL.h>
+}
+
 #include <base/string/define.h>
 #include <iostream>
 
