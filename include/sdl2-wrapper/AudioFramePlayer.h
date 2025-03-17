@@ -7,7 +7,6 @@
 #include <ffmpeg-wrapper/wrapper/AVFrameWrapper.h>
 #include <ffmpeg-wrapper/wrapper/SwrContextWrapper.h>
 #include <sdl2-wrapper/IRefTimer.h>
-#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/SDL_DefaultAudioDevice.h>
 #include <sdl2-wrapper/SDL_EventGetter.h>
 #include <sdl2-wrapper/SDL_Initializer.h>

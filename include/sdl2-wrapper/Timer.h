@@ -1,6 +1,5 @@
 #pragma once
 #include <base/task/TaskCompletionSignal.h>
-#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/SDL_EventGetter.h>
 #include <sdl2-wrapper/SDL_Initializer.h>
 

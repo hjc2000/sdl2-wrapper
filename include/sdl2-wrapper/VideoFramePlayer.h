@@ -8,7 +8,6 @@
 #include <ffmpeg-wrapper/wrapper/AVCodecContextWrapper.h>
 #include <ffmpeg-wrapper/wrapper/AVStreamWrapper.h>
 #include <sdl2-wrapper/IRefTimer.h>
-#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/Timer.h>
 #include <sdl2-wrapper/VideoFrameDisplayer.h>
 

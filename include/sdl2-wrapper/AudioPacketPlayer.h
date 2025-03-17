@@ -9,7 +9,6 @@
 #include <ffmpeg-wrapper/wrapper/AVCodecContextWrapper.h>
 #include <ffmpeg-wrapper/wrapper/AVStreamWrapper.h>
 #include <sdl2-wrapper/AudioFramePlayer.h>
-#include <sdl2-wrapper/pch.h>
 
 namespace video
 {

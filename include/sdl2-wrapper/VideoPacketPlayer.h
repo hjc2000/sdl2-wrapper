@@ -6,7 +6,6 @@
 #include <base/task/CancellationTokenSource.h>
 #include <ffmpeg-wrapper/ErrorCode.h>
 #include <ffmpeg-wrapper/pipe/ThreadDecoderPipe.h>
-#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/VideoFramePlayer.h>
 
 namespace video

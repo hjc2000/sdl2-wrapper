@@ -1,6 +1,5 @@
 #pragma once
 #include <base/Wrapper.h>
-#include <sdl2-wrapper/pch.h>
 #include <sdl2-wrapper/SDL_Initializer.h>
 #include <sdl2-wrapper/SDL_RendererWrapper.h>
 
