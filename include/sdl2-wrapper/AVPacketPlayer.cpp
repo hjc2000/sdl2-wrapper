@@ -1,4 +1,4 @@
-#include <base/stream/IFileStream.h>
+#include <base/file/IFileStream.h>
 #include <base/string/define.h>
 #include <ffmpeg-wrapper/input-format/InputFormat.h>
 #include <ffmpeg-wrapper/wrapper/AVIOContextWrapper.h>
@@ -54,13 +54,12 @@ void video::AVPacketPlayer::SendData(AVPacketWrapper &packet)
 
 void video::test_AVPacketPlayer()
 {
-	auto fs = base::di::file::OpenExisting("郭顶 - 凄美地.mkv");
-	std::shared_ptr<AVIOContextWrapper> io_context{
-		new AVIOContextWrapper{
-			video::AVIOContextWrapper_IsWrite{false},
-			fs,
-		},
-	};
+	auto fs = base::file::OpenExisting("郭顶 - 凄美地.mkv");
+
+	std::shared_ptr<AVIOContextWrapper> io_context{new AVIOContextWrapper{
+		video::AVIOContextWrapper_IsWrite{false},
+		fs,
+	}};
 
 	std::shared_ptr<InputFormat> in_fmt_ctx{new InputFormat{io_context}};
 	in_fmt_ctx->DumpFormat();
