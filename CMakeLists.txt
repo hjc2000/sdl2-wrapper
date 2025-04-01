@@ -13,11 +13,6 @@ if(1)
 endif()
 
 
-include(target_import_sdl2)
-include(target_import_base)
-include(target_import_ffmpeg_wrapper)
-
-
 # 编译为动态库
 add_library(${ProjectName})
 
