@@ -54,7 +54,7 @@ void video::AVPacketPlayer::SendData(AVPacketWrapper &packet)
 
 void video::test_AVPacketPlayer()
 {
-	auto fs = base::file::OpenExisting("郭顶 - 凄美地.mkv");
+	auto fs = base::file::OpenExisting("idol.mp4");
 
 	std::shared_ptr<AVIOContextWrapper> io_context{new AVIOContextWrapper{
 		video::AVIOContextWrapper_IsWrite{false},
