@@ -1,103 +1,98 @@
 #include "AudioPacketPlayer.h"
 
-using namespace video;
-using namespace std;
-
-void AudioPacketPlayer::DecodingThreadFunc()
+void video::AudioPacketPlayer::DecodingThreadFunc()
 {
-    _decoding_thread_can_start.Wait();
-    _packet_pump->PumpDataToConsumers(_cancel_pump_source.Token());
+	_decoding_thread_can_start.Wait();
+	_packet_pump->PumpDataToConsumers(_cancel_pump_source.Token());
 }
 
-AudioPacketPlayer::AudioPacketPlayer(AVStreamWrapper const &stream)
+video::AudioPacketPlayer::AudioPacketPlayer(AVStreamWrapper const &stream)
 {
-#pragma region 安装管道
-    // 根据音频流构造音频帧播放器
-    _player = shared_ptr<AudioFramePlayer>{new AudioFramePlayer{stream}};
+	/* #region 安装管道 */
 
-    // 根据音频流创建解码器
-    _decoder_pipe = unique_ptr<ThreadDecoderPipe>{new ThreadDecoderPipe{stream}};
-    _decoder_pipe->ConsumerList().Add(_player);
+	// 根据音频流构造音频帧播放器
+	_player = std::shared_ptr<AudioFramePlayer>{new AudioFramePlayer{stream}};
 
-    _packet_queue = shared_ptr<base::PipeBlockingQueue<AVPacketWrapper>>{
-        new base::PipeBlockingQueue<AVPacketWrapper>{},
-    };
+	// 根据音频流创建解码器
+	_decoder_pipe = std::unique_ptr<ThreadDecoderPipe>{new ThreadDecoderPipe{stream}};
+	_decoder_pipe->ConsumerList().Add(_player);
 
-    // 将包从队列送到管道解码器的泵
-    _packet_pump = shared_ptr<base::Pump<AVPacketWrapper>>{
-        new base::Pump<AVPacketWrapper>{_packet_queue},
-    };
+	_packet_queue = std::shared_ptr<base::PipeBlockingQueue<AVPacketWrapper>>{new base::PipeBlockingQueue<AVPacketWrapper>{}};
 
-    _packet_pump->ConsumerList().Add(_decoder_pipe);
-#pragma endregion
+	// 将包从队列送到管道解码器的泵
+	_packet_pump = std::shared_ptr<base::Pump<AVPacketWrapper>>{new base::Pump<AVPacketWrapper>{_packet_queue}};
 
-    // 解码线程
-    std::thread(
-        [&]()
-        {
-            try
-            {
-                DecodingThreadFunc();
-            }
-            catch (std::exception &e)
-            {
-                cout << CODE_POS_STR << e.what() << endl;
-            }
+	_packet_pump->ConsumerList().Add(_decoder_pipe);
 
-            _decoding_thread_has_exited.SetResult();
-        })
-        .detach();
+	/* #endregion */
+
+	// 解码线程
+	std::thread(
+		[&]()
+		{
+			try
+			{
+				DecodingThreadFunc();
+			}
+			catch (std::exception &e)
+			{
+				std::cout << CODE_POS_STR << e.what() << std::endl;
+			}
+
+			_decoding_thread_has_exited.SetResult();
+		})
+		.detach();
 }
 
-AudioPacketPlayer::~AudioPacketPlayer()
+video::AudioPacketPlayer::~AudioPacketPlayer()
 {
-    Dispose();
-    cout << "~AudioPacketPlayer()" << endl;
+	Dispose();
+	std::cout << "~AudioPacketPlayer()" << std::endl;
 }
 
-void AudioPacketPlayer::Dispose()
+void video::AudioPacketPlayer::Dispose()
 {
-    if (_disposed)
-    {
-        return;
-    }
+	if (_disposed)
+	{
+		return;
+	}
 
-    _disposed = true;
+	_disposed = true;
 
-    _decoding_thread_can_start.Dispose();
-    _cancel_pump_source.Cancel();
-    _decoder_pipe->Dispose();
-    _player->Dispose();
-    _packet_queue->Dispose();
-    _decoding_thread_has_exited.Wait();
+	_decoding_thread_can_start.Dispose();
+	_cancel_pump_source.Cancel();
+	_decoder_pipe->Dispose();
+	_player->Dispose();
+	_packet_queue->Dispose();
+	_decoding_thread_has_exited.Wait();
 }
 
-int64_t AudioPacketPlayer::RefTime()
+int64_t video::AudioPacketPlayer::RefTime()
 {
-    return _player->RefTime();
+	return _player->RefTime();
 }
 
-void AudioPacketPlayer::Pause(bool pause)
+void video::AudioPacketPlayer::Pause(bool pause)
 {
-    if (pause)
-    {
-        /* 暂停播放
-         * 暂停帧播放器。
-         * 解码线程在帧播放器的缓冲区达到上限后会阻塞，所以只要暂停帧播放器，让帧播放器
-         * 不要消费，就可以达到暂停播放的目的。
-         */
-        _player->Pause(true);
-    }
-    else
-    {
-        // 开始播放
-        _decoding_thread_has_exited.Reset();
-        _decoding_thread_can_start.SetResult();
-        _player->Pause(false);
-    }
+	if (pause)
+	{
+		/* 暂停播放
+		 * 暂停帧播放器。
+		 * 解码线程在帧播放器的缓冲区达到上限后会阻塞，所以只要暂停帧播放器，让帧播放器
+		 * 不要消费，就可以达到暂停播放的目的。
+		 */
+		_player->Pause(true);
+	}
+	else
+	{
+		// 开始播放
+		_decoding_thread_has_exited.Reset();
+		_decoding_thread_can_start.SetResult();
+		_player->Pause(false);
+	}
 }
 
-void AudioPacketPlayer::SendData(AVPacketWrapper &packet)
+void video::AudioPacketPlayer::SendData(AVPacketWrapper &packet)
 {
-    _packet_queue->SendData(packet);
+	_packet_queue->SendData(packet);
 }
