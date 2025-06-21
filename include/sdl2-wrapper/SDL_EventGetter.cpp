@@ -1,4 +1,5 @@
 #include "sdl2-wrapper/SDL_EventGetter.h"
+#include "base/string/define.h"
 #include <iostream>
 
 video::SDL_EventGetter::SDL_EventGetter()

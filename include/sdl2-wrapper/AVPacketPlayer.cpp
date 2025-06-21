@@ -1,16 +1,17 @@
-#include <base/file/IFileStream.h>
-#include <base/string/define.h>
-#include <ffmpeg-wrapper/input-format/InputFormat.h>
-#include <ffmpeg-wrapper/wrapper/AVIOContextWrapper.h>
-#include <sdl2-wrapper/AVPacketPlayer.h>
+#include "sdl2-wrapper/AVPacketPlayer.h"
+#include "base/file/IFileStream.h"
+#include "base/string/define.h"
+#include "ffmpeg-wrapper/input-format/InputFormat.h"
+#include "ffmpeg-wrapper/wrapper/AVIOContextWrapper.h"
+#include <thread>
 
 video::AVPacketPlayer::AVPacketPlayer(int x,
 									  int y,
-									  AVStreamWrapper const &video_stream,
-									  AVStreamWrapper const &audio_stream)
+									  video::AVStreamWrapper const &video_stream,
+									  video::AVStreamWrapper const &audio_stream)
 {
-	_audio_packet_player = std::shared_ptr<AudioPacketPlayer>{new AudioPacketPlayer{audio_stream}};
-	_video_packet_player = std::shared_ptr<VideoPacketPlayer>{new VideoPacketPlayer{x, y, video_stream}};
+	_audio_packet_player = std::shared_ptr<video::AudioPacketPlayer>{new AudioPacketPlayer{audio_stream}};
+	_video_packet_player = std::shared_ptr<video::VideoPacketPlayer>{new VideoPacketPlayer{x, y, video_stream}};
 	_video_packet_player->SetRefTimer(_audio_packet_player);
 	_video_stream_index = video_stream.Index();
 	_audio_stream_index = audio_stream.Index();

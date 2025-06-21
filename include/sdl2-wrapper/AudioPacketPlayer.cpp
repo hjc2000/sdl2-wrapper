@@ -1,4 +1,5 @@
 #include "AudioPacketPlayer.h"
+#include <thread>
 
 void video::AudioPacketPlayer::DecodingThreadFunc()
 {
