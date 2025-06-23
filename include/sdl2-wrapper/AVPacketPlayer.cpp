@@ -68,14 +68,12 @@ void video::test_AVPacketPlayer()
 	AVStreamWrapper best_audio_stream = in_fmt_ctx->FindBestStream(AVMediaType::AVMEDIA_TYPE_AUDIO);
 	AVStreamWrapper best_video_stream = in_fmt_ctx->FindBestStream(AVMediaType::AVMEDIA_TYPE_VIDEO);
 
-	std::shared_ptr<AVPacketPlayer> player{
-		new AVPacketPlayer{
-			0,
-			70,
-			best_video_stream,
-			best_audio_stream,
-		},
-	};
+	std::shared_ptr<AVPacketPlayer> player{new AVPacketPlayer{
+		0,
+		70,
+		best_video_stream,
+		best_audio_stream,
+	}};
 
 	AVPacketWrapper packet;
 	base::CancellationTokenSource cancellation_token_source;
