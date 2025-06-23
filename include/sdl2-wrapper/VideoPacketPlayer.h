@@ -24,10 +24,10 @@ namespace video
 
 		/// @brief 解码线程创建后会立刻等待此信号，当时机成熟，解码线程可以开始执行了，
 		/// 就将此信号设置为已完成。
-		base::TaskCompletionSignal _decoding_thread_can_start{false};
+		base::task::TaskCompletionSignal _decoding_thread_can_start{false};
 
 		/// @brief 解码线程退出后设为已完成。
-		base::TaskCompletionSignal _thread_has_exited{true};
+		base::task::TaskCompletionSignal _thread_has_exited{true};
 
 		/// @brief 用于解码的线程函数
 		void DecodingThreadFunc();

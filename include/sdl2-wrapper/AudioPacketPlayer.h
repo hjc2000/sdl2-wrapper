@@ -28,10 +28,10 @@ namespace video
 
 		/// @brief 此任务完成，说明解码线程函数 DecodingThreadFunc 已经结束了，且不会再执行了，
 		/// 已经彻底退出了。初始时线程没有启动，所以为已完成。
-		base::TaskCompletionSignal _decoding_thread_has_exited{true};
+		base::task::TaskCompletionSignal _decoding_thread_has_exited{true};
 
 		/// @brief 线程启动后会立刻等待此信号。时机成熟后将此信号设置为完成以让线程函数真正开始执行。
-		base::TaskCompletionSignal _decoding_thread_can_start{false};
+		base::task::TaskCompletionSignal _decoding_thread_can_start{false};
 
 		/// @brief 用于解码的线程函数。
 		void DecodingThreadFunc();

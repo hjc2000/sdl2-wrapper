@@ -9,7 +9,7 @@ namespace video
 	class Timer final
 	{
 	private:
-		base::TaskCompletionSignal _callback_has_stopped{true};
+		base::task::TaskCompletionSignal _callback_has_stopped{true};
 		std::atomic_bool _callback_should_stop = false;
 
 		static uint32_t static_callback(uint32_t interval, void *param);

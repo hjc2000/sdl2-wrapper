@@ -80,7 +80,7 @@ void video::test_AVPacketPlayer()
 	AVPacketWrapper packet;
 	base::CancellationTokenSource cancellation_token_source;
 	auto cancellation_token = cancellation_token_source.Token();
-	base::TaskCompletionSignal thread_has_exited{false};
+	base::task::TaskCompletionSignal thread_has_exited{false};
 	base::Pump<AVPacketWrapper> packet_pump{in_fmt_ctx};
 	packet_pump.ConsumerList().Add(player);
 
