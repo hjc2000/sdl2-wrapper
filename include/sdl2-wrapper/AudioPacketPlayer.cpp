@@ -1,4 +1,5 @@
 #include "AudioPacketPlayer.h"
+#include "ffmpeg-wrapper/pipe/ThreadDecoderPipe.h"
 #include <thread>
 
 void video::AudioPacketPlayer::DecodingThreadFunc()

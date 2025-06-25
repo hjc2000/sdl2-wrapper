@@ -1,9 +1,8 @@
 #pragma once
-#include <base/container/HysteresisBlockingQueue.h>
-#include <base/IDisposable.h>
-#include <base/pipe/IConsumer.h>
-#include <sdl2-wrapper/AudioPacketPlayer.h>
-#include <sdl2-wrapper/VideoPacketPlayer.h>
+#include "base/IDisposable.h"
+#include "base/pipe/IConsumer.h"
+#include "sdl2-wrapper/AudioPacketPlayer.h"
+#include "sdl2-wrapper/VideoPacketPlayer.h"
 
 namespace video
 {

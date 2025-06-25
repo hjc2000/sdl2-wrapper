@@ -1,15 +1,12 @@
 #pragma once
-#include <base/container/HysteresisBlockingQueue.h>
-#include <base/container/SafeQueue.h>
-#include <base/IDisposable.h>
-#include <base/pipe/IConsumer.h>
-#include <ffmpeg-wrapper/ErrorCode.h>
-#include <ffmpeg-wrapper/info-collection/VideoStreamInfoCollection.h>
-#include <ffmpeg-wrapper/wrapper/AVCodecContextWrapper.h>
-#include <ffmpeg-wrapper/wrapper/AVStreamWrapper.h>
-#include <sdl2-wrapper/IRefTimer.h>
-#include <sdl2-wrapper/Timer.h>
-#include <sdl2-wrapper/VideoFrameDisplayer.h>
+#include "base/container/BlockingQueue.h"
+#include "base/IDisposable.h"
+#include "base/pipe/IConsumer.h"
+#include "ffmpeg-wrapper/info-collection/VideoStreamInfoCollection.h"
+#include "ffmpeg-wrapper/wrapper/AVCodecContextWrapper.h"
+#include "sdl2-wrapper/IRefTimer.h"
+#include "sdl2-wrapper/Timer.h"
+#include "sdl2-wrapper/VideoFrameDisplayer.h"
 
 namespace video
 {
@@ -22,7 +19,7 @@ namespace video
 		Timer _timer;
 		std::shared_ptr<VideoFrameDisplayer> _displayer;
 		VideoStreamInfoCollection _video_stream_infos{};
-		base::HysteresisBlockingQueue<AVFrameWrapper> _frame_queue{10};
+		base::BlockingQueue<AVFrameWrapper> _frame_queue{10};
 		std::shared_ptr<IRefTimer> _ref_timer;
 
 		/// @brief Timer 回调处理函数，需要在这里向显示器送入帧。

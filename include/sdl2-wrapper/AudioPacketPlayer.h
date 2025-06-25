@@ -1,14 +1,13 @@
 #pragma once
-#include <base/container/HysteresisBlockingQueue.h>
-#include <base/pipe/IConsumer.h>
-#include <base/pipe/PipeBlockingQueue.h>
-#include <base/pipe/Pump.h>
-#include <base/task/CancellationTokenSource.h>
-#include <base/task/TaskCompletionSignal.h>
-#include <ffmpeg-wrapper/pipe/ThreadDecoderPipe.h>
-#include <ffmpeg-wrapper/wrapper/AVCodecContextWrapper.h>
-#include <ffmpeg-wrapper/wrapper/AVStreamWrapper.h>
-#include <sdl2-wrapper/AudioFramePlayer.h>
+#include "base/pipe/IConsumer.h"
+#include "base/pipe/PipeBlockingQueue.h"
+#include "base/pipe/Pump.h"
+#include "base/task/CancellationTokenSource.h"
+#include "base/task/TaskCompletionSignal.h"
+#include "ffmpeg-wrapper/pipe/interface/IDecoderPipe.h"
+#include "ffmpeg-wrapper/wrapper/AVCodecContextWrapper.h"
+#include "ffmpeg-wrapper/wrapper/AVStreamWrapper.h"
+#include "sdl2-wrapper/AudioFramePlayer.h"
 
 namespace video
 {
