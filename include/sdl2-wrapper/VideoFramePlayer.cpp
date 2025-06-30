@@ -118,7 +118,7 @@ void video::VideoFramePlayer::SendData(AVFrameWrapper &frame)
 
 void video::VideoFramePlayer::Flush()
 {
-	_frame_queue.Flush();
+	_frame_queue.Dispose();
 }
 
 void video::VideoFramePlayer::SetRefTimer(std::shared_ptr<IRefTimer> value)
