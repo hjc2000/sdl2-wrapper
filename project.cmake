@@ -6,7 +6,8 @@ target_import_ffmpeg_wrapper(${ProjectName} PUBLIC)
 
 
 # 添加测试程序
-if(platform STREQUAL "msys")
+if(("${platform}" STREQUAL "msys") OR
+   ("${platform}" STREQUAL "msys-clang"))
 	set(exe_name "test")
 	add_executable(${exe_name} ${CMAKE_CURRENT_SOURCE_DIR}/exe/main.cpp)
 
