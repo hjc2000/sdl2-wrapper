@@ -8,17 +8,15 @@ video::VideoFramePlayer::VideoFramePlayer(int x,
 {
 	_video_stream_infos = infos;
 
-	_displayer = std::shared_ptr<VideoFrameDisplayer>{
-		new VideoFrameDisplayer{
-			x,
-			y,
-			_video_stream_infos.Width(),
-			_video_stream_infos.Height(),
-			_video_stream_infos.PixelFormat(),
-			window_title,
-			flags,
-		},
-	};
+	_displayer = std::shared_ptr<VideoFrameDisplayer>{new VideoFrameDisplayer{
+		x,
+		y,
+		_video_stream_infos.Width(),
+		_video_stream_infos.Height(),
+		_video_stream_infos.PixelFormat(),
+		window_title,
+		flags,
+	}};
 
 	_timer._callback = [&](uint32_t interval_in_milliseconds) -> uint32_t
 	{
