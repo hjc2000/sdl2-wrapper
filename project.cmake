@@ -1,4 +1,4 @@
-add_library(${ProjectName} STATIC)
+add_library(${ProjectName} OBJECT)
 target_import_src(${ProjectName})
 target_import_base(${ProjectName} PUBLIC)
 target_import_sdl2(${ProjectName} PUBLIC)
