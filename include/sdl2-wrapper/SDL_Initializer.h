@@ -1,9 +1,12 @@
 #pragma once
-#include <base/Wrapper.h>
 
 extern "C"
 {
+	// IWYU pragma: begin_exports
+
 #include "SDL.h"
+
+	// IWYU pragma: end_exports
 }
 
 namespace video
@@ -39,4 +42,5 @@ namespace video
 		/// <exception cref="Exception 失败会抛出异常"></exception>
 		static void Initialize(SDL_InitOption option = SDL_InitOption::Everything);
 	};
+
 } // namespace video

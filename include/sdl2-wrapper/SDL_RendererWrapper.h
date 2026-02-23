@@ -5,8 +5,7 @@
 namespace video
 {
 	/// @brief SDL 渲染器包装类
-	class SDL_RendererWrapper :
-		public base::Wrapper<SDL_Renderer>
+	class SDL_RendererWrapper
 	{
 	private:
 		SDL_Renderer *_wrapped_obj = nullptr;
@@ -18,7 +17,7 @@ namespace video
 
 		SDL_RendererWrapper &operator=(SDL_RendererWrapper const &o);
 
-		SDL_Renderer *WrappedObj() const override
+		SDL_Renderer *WrappedObj() const
 		{
 			return _wrapped_obj;
 		}

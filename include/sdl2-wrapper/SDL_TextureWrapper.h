@@ -1,11 +1,10 @@
 #pragma once
-#include <ffmpeg-wrapper/wrapper/AVFrameWrapper.h>
-#include <sdl2-wrapper/SDL_Initializer.h>
+#include "ffmpeg-wrapper/wrapper/AVFrameWrapper.h"
+#include "sdl2-wrapper/SDL_Initializer.h"
 
 namespace video
 {
-	class SDL_TextureWrapper final :
-		public base::Wrapper<SDL_Texture>
+	class SDL_TextureWrapper final
 	{
 	private:
 		SDL_Texture *_wrapped_obj = nullptr;
@@ -40,9 +39,10 @@ namespace video
 		///
 		int UpdateYUVTexture(SDL_Rect const *rect, AVFrameWrapper &frame);
 
-		SDL_Texture *WrappedObj() const override
+		SDL_Texture *WrappedObj() const
 		{
 			return _wrapped_obj;
 		}
 	};
+
 } // namespace video

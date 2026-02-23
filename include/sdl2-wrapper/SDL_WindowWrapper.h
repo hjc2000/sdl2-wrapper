@@ -1,7 +1,6 @@
 #pragma once
-#include <base/Wrapper.h>
-#include <sdl2-wrapper/SDL_Initializer.h>
-#include <sdl2-wrapper/SDL_RendererWrapper.h>
+#include "sdl2-wrapper/SDL_Initializer.h"
+#include "sdl2-wrapper/SDL_RendererWrapper.h"
 
 namespace video
 {
@@ -29,8 +28,7 @@ namespace video
 	};
 
 	/// @brief SDL 窗口包装器
-	class SDL_WindowWrapper :
-		public base::Wrapper<SDL_Window>
+	class SDL_WindowWrapper
 	{
 	private:
 		SDL_Window *_wrapped_obj = nullptr;
@@ -62,9 +60,10 @@ namespace video
 		/// @return
 		static SDL_Rect GetScreenSize();
 
-		SDL_Window *WrappedObj() const override
+		SDL_Window *WrappedObj() const
 		{
 			return _wrapped_obj;
 		}
 	};
+
 } // namespace video

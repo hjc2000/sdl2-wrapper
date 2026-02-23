@@ -52,13 +52,16 @@ int video::SDL_RendererWrapper::RenderTexture(std::shared_ptr<SDL_TextureWrapper
 											  SDL_Rect const *srcrect,
 											  SDL_Rect const *dstrect)
 {
-	return SDL_RenderCopy(_wrapped_obj, *texture, srcrect, dstrect);
+	return SDL_RenderCopy(_wrapped_obj,
+						  texture->WrappedObj(),
+						  srcrect,
+						  dstrect);
 }
 
 int video::SDL_RendererWrapper::RenderTexture(std::shared_ptr<SDL_TextureWrapper> texture)
 {
 	return SDL_RenderCopy(_wrapped_obj,
-						  *texture,
+						  texture->WrappedObj(),
 						  nullptr,
 						  nullptr);
 }
