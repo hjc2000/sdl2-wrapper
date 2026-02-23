@@ -3,10 +3,12 @@
 
 video::SDL_DefaultAudioDevice::SDL_DefaultAudioDevice()
 {
-	_desired_spec->callback = static_audio_callback;
-	_desired_spec->userdata = this;
+	_desired_spec.WrappedObj()->callback = static_audio_callback;
+	_desired_spec.WrappedObj()->userdata = this;
 
-	int device_id = SDL_OpenAudio(_desired_spec, _abtained_spec);
+	int device_id = SDL_OpenAudio(_desired_spec.WrappedObj(),
+								  _abtained_spec.WrappedObj());
+
 	if (device_id < 0)
 	{
 		std::string error_str = "Could not open audio: " + std::string(SDL_GetError());

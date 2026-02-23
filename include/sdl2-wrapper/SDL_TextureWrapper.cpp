@@ -25,7 +25,7 @@ int video::SDL_TextureWrapper::UpdateYUVTexture(SDL_Rect const *rect,
 int video::SDL_TextureWrapper::UpdateYUVTexture(SDL_Rect const *rect, video::AVFrameWrapper &frame)
 {
 	return UpdateYUVTexture(rect,
-							frame->data[0], frame->linesize[0],
-							frame->data[1], frame->linesize[1],
-							frame->data[2], frame->linesize[2]);
+							frame.WrappedObj()->data[0], frame.WrappedObj()->linesize[0],
+							frame.WrappedObj()->data[1], frame.WrappedObj()->linesize[1],
+							frame.WrappedObj()->data[2], frame.WrappedObj()->linesize[2]);
 }

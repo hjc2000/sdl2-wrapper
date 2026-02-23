@@ -8,7 +8,6 @@ namespace video
 {
 	/// @brief 音频设备包装器
 	class SDL_AudioSpecWrapper :
-		public base::Wrapper<SDL_AudioSpec>,
 		public IAudioFrameInfoCollection,
 		public base::IJsonSerializable
 	{
@@ -23,7 +22,7 @@ namespace video
 		SDL_AudioSpecWrapper(SDL_AudioSpecWrapper const &o);
 		SDL_AudioSpecWrapper &operator=(SDL_AudioSpecWrapper const &o);
 
-		SDL_AudioSpec *WrappedObj() const override
+		SDL_AudioSpec *WrappedObj() const
 		{
 			return _wrapped_obj;
 		}
